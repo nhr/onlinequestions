@@ -18,7 +18,7 @@ However, you will lose state when the container stops. If you want to preserve t
 `podman run -d -P --name onlinequestions --mount=type=bind,src=<PATH_TO_HOST_DIR>,dst=/var/www/html/events,U=true <IMAGE_NAME:TAG>`
 
 ## Vendored components
-The `jquery-ui` folder and all of its contents are vendored from [jqueryui.com](https://jqueryui.com/) along with a legacy version of [jQuery](https://jquery.com/) itself. The Dockerfile in this project specifies a particular version of the official PHP + Apache container that works with this code.
+The `jquery-ui` folder and all of its contents are vendored from [jqueryui.com](https://jqueryui.com/) along with a legacy version of [jQuery](https://jquery.com/) itself. The `fonts` folder contains several versions of [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans) from Google Fonts. The Dockerfile in this project specifies a particular version of the official PHP + Apache container that works with this code.
 
 ## Security disclaimer
 The project's author makes no statements about the security of the original application, and I'm not making any statements about the security of this containerized version.
