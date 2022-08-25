@@ -13,7 +13,7 @@ You can run this app without persistent storage just by issuing a basic run comm
 
 `podman run -d -P --name onlinequestions <IMAGE_NAME:TAG>`
 
-However, you will lose state when the container stops. If you want to preserve the different question-gathering sessions, you need to mount persistent storage that points to `/var/www/html/events` within the container. On a personal workstation, you can use a bin mount for this:
+However, you will lose state when the container stops. If you want to preserve the different question-gathering sessions, you need to mount persistent storage that points to `/var/www/html/events` within the container. On a personal workstation, you can use a bind mount for this:
 
 `podman run -d -P --name onlinequestions --mount=type=bind,src=<PATH_TO_HOST_DIR>,dst=/var/www/html/events,U=true <IMAGE_NAME:TAG>`
 
