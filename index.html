@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Post and vote for questions or messages using mobile phones or other internet devices during large lectures, classes, meetups, or conferences: free-of-charge, anonymous, ad-free, easy-to-use." />
+    <meta name="keywords" content="free web-based question voting, interactive Q&A plattform, free temporary online group chat, real-time questions, online audience questions" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="OnlineQuestions.org: A free online tool to ask and upvote questions" />
+    <meta property="og:description" content="Post and vote for questions or messages using mobile phones or other internet devices during large lectures, classes, meetups, or conferences: free-of-charge, anonymous, ad-free, easy-to-use." />
+    <meta property="og:image" content="https://onlinequestions.org/linkimg.jpg" />
+    
+    <title>OnlineQuestions.org: A free online tool to ask and upvote questions</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+
+    <!-- include external libraries (start) -->
+    <!-- MIT license https://jquery.org/license/ -->
+    <link href="./jquery-ui/jquery-ui.css" rel="stylesheet">
+    <script src="./jquery-ui/jquery.js"></script>
+    <script src="./jquery-ui/jquery-ui.js"></script>
+    <!-- include external libraries (end) -->
+    
+    <link href="./clicker.css" rel="stylesheet">
+    <script src="./clicker.js"></script>
+
+  </head>
+  <body>
+    <div id="outmost" class="ui-widget">
+
+      <div id="mainWidget" class="mainWidgetCommon ui-widget">
+        <div id="pageEntry" class="myWidget">
+
+          <div>
+            <span class="myTitle">OnlineQuestions.org</span><br>
+            <span class="mySubTitle smaller">Live online questions for large events: free-of-charge, anonymous, ad-free, easy-to-use</span>
+          </div>
+
+          <hr class="mediumTopMargin">
+
+          <div class="myfield largeTopMargin" title="Audience members can enter an event number and press the enter button">
+            <div class="myfieldHeader">
+              <span>For Audience Members</span>
+            </div>
+            <div class="fieldPad">
+              <div class="larger">
+                <div>
+                  Event number:<br>
+                  <input id="eventNumber" class="smallTopMargin myNumber" type="number" name="points" min="0" tabindex="1">
+                </div>
+                <div id="enter" class="largeTopMargin" tabindex="2">Enter</div>
+              </div>
+              <div id="enterError" class="largeTopMargin errorMsg">
+              </div>
+            </div>
+          </div>
+
+          <div class="myfield largeTopMargin" title="Speakers can create or re-open an event here">
+            <div class="myfieldHeader">
+              <span>For Speaker</span>
+            </div>
+            <div class="fieldPad larger">
+              <div id="admin" style="font-size:0.75em;" title="Speakers press this button to create a new or open an event" tabindex="3">Admin</div>
+              <div class="help" style="font-size:0.75em;" title="Show help, terms of use, privacy policy, and imprint" tabindex="4">About</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="pageCreate" class="hidden myWidget">
+
+          <div>
+            <span class="myTitle">OnlineQuestions.org</span><br>
+            <span class="mySubTitle smaller">Live online questions for large events: free-of-charge, anonymous, ad-free, easy-to-use</span>
+          </div>
+
+          <hr class="mediumTopMargin">
+          <div class="myfield largeTopMargin" title="Speakers can create or re-open an event here">
+            <div class="myfieldHeader">
+              <span>Administrator: Manage Event</span>
+            </div>
+
+            <div class="fieldPad">
+              <div class="bitLarger">
+                <div>
+                  Create or open an event with a unique event number <br>(at least 5 digits, more are recommended):<br>
+                  <input id="eventNumberCreate" class="smallTopMargin myNumber" type="number" name="eventNumber" min="0" tabindex="5">
+                </div>
+                <div class="largeTopMargin">
+                  Secret password that identifies you as administrator of this event<br> (do not share with audience members):<br>
+                  <input id="adminPasswordCreate" class="smallTopMargin myNumber" type="password" name="answernumber" tabindex="6">
+                </div> 
+                <div id="createError" class="smallTopMargin errorMsg">
+                </div>
+
+                <hr class="largeTopMargin">
+                <div id="create" style="font-size:0.75em;" title="Create a new event" tabindex="7">Create</div>  
+                <div id="open" style="font-size:0.75em;" title="Open an existing event" tabindex="8">Open</div> 
+                <div class="help" style="font-size:0.75em;" title="Show help, terms of use, privacy policy, and imprint" tabindex="9">Help</div>
+                <div class="back" style="font-size:0.75em;" title="Go back to entry page" tabindex="10">Back</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="pageHelp" class="myWidget hidden">
+          <div>
+            <span class="myTitle">OnlineQuestions.org</span><br>
+            <span class="mySubTitle smaller">Live online questions for large events: free-of-charge, anonymous, ad-free, easy-to-use</span>
+          </div>
+          <hr class="smaller mediumTopMargin">
+          <div id="aboutContent">
+            <p class="smaller mediumTopMargin">
+              <a href="https://OnlineQuestions.org" target="_blank">OnlineQuestions.org</a> is an 
+              online tool to ask and upvote questions during large lectures, classes, meetups, or conferences. 
+              It is free-of-charge, easy-to-use, anonymous (requires no login or registration), and is ad-free.
+            </p>
+
+            <p class="smaller mediumTopMargin">An interactive event session is simply created 
+              by opening the web page <a href="https://OnlineQuestions.org" target="_blank">OnlineQuestions.org</a> and pressing the <b>Admin</b> button. 
+              The speaker chooses a unique event number and an administrative password. No registration is required. The 
+              unique event number must be at least 5 digits long (more digits are recommended).
+            </p>
+
+            <p class="smaller mediumTopMargin">During the event, the audience members open the web page
+              <a href="https://OnlineQuestions.org" target="_blank">OnlineQuestions.org</a> with any internet accessible device, 
+              enter the unique event number, and press the <b>Enter</b>
+              button. Now, they can submit a new question by pressing the <b>New</b> button. A dialog appears to enter the question text. 
+              Furthermore, different colors for the question container can be selected.
+              Because no personal login is required, it is ensured that the questions are anonymous. 
+            </p>
+            <p class="smaller mediumTopMargin">
+              Submitted questions are visible to all participants of the event. Thus, no confidential information should be entered. 
+              Note, that someone external, who guesses the unique event number, might also access the question data.
+              However, such a coincidence is very unlikely. If more data protection is required, an event number with 9 or more digits 
+              should be chosen during the creation of the event.
+            </p>
+
+            <p class="smaller mediumTopMargin">Own questions and questions by other audience members can be upvoted by clicking on the colored question container.
+              By default, the questions are sorted by the number of received votes (but other sorting criteria can be selected as well).
+
+            <p class="smaller mediumTopMargin">After the event, the speaker has the option to directly swipe all question data. 
+              Eight days after the creation of the event, all data is automatically deleted.</p>
+            
+              <p class="smaller mediumTopMargin">You might also like the partner website <a href="https://OnlineClicker.org">OnlineClicker.org</a>, which provides a free online tool for anonymous polls.
+          </p>
+            
+            <hr class="largeTopMargin">
+            <p class="smaller"> 
+              Copyright &copy; <a href="http://www.thormae.de" target="_blank">Thorsten Thorm&auml;hlen</a>, Marburg, 2019<br><br>
+              This website and services were created for educational purpose and without any commercial interest.
+              There is no warranty or other guarantee of fitness. 
+              The author is not liable for any cost or damage caused either
+              directly or indirectly. Furthermore, the services can be changed or terminated without an announcement at any time.
+            </p>
+		  
+		    <p class="smaller">The software is open source and released under the MIT license (<a href="source.zip">source code</a>).</p>
+		  
+            <p class="smaller">This website does not collect any personal or business data. Furthermore, no tracking mechanisms or web analytics services are employed.
+              The website is hosted at <a href="https://www.strato.de/">Strato AG</a>, Germany.
+              Strato's web hosting uses only typical connection data, such as the IP address, to provide its services. 
+              After a maximum of 7&nbsp;days the IP address is deleted or is made anonymous. 
+            </p>
+          </div> <!-- end about content -->
+
+          <hr class="mediumTopMargin">
+          <div class="back" style="font-size:0.75em;" title="Go back to entry page">Back</div>
+        </div>
+      </div>
+      
+      <!-- new question dialog -->
+      <div id="newQuestionDialog" title="Create a new question or comment">
+        <div class="questionContainer">
+          <div id="questionPreview" class="questionInaktiv">  
+            <div class="outerContainer">    
+              <div class="innerContainer">
+                <span id="questionPreviewContent"></span>
+              </div>
+
+            </div> 
+          </div>
+        </div>
+        <div id="newQuestionLengthDiv">
+          <span id="textLength">0</span>/230
+        </div>
+        <div id="newQuestionTextDiv">
+          <input type="text" id="newQuestionText" name="newQuestionTextName" maxlength="230" tabindex="1">
+        </div>
+
+        <div id="controlgroup4Container">
+          <div id="controlgroup4" class="largeTopMargin">
+            <button id="colorButtonNewQ0" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+            <button id="colorButtonNewQ1" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+            <button id="colorButtonNewQ2" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+            <button id="colorButtonNewQ3" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+            <button id="colorButtonNewQ4" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+          </div>
+        </div>
+        <div id="submitQuestionError" class="smallTopMargin errorMsg">
+        </div>       
+
+      </div>
+      
+      <!-- wide data dialog -->
+      <div id="wipeDialog" title="Wide Data">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>This command deletes all questions in this event. This can not be undone. Are you sure?</p>
+      </div>
+
+      <!-- export data dialog -->
+      <div id="exportDialog" title="Export Data">
+        
+        <div id="exporttabs">
+          <ul>
+            <li><a href="#exporttabs-1">Text</a></li>
+            <li><a href="#exporttabs-2">JSON</a></li>
+            <li><a href="#exporttabs-3">CSV</a></li>
+          </ul>
+          <div id="exporttabs-1">
+          </div>
+          <div id="exporttabs-2">
+          </div>
+          <div id="exporttabs-3">
+          </div>
+        </div>
+      </div>
+      
+      <!-- mainResultWidget -->
+      <div id="mainResultWidget" class="mainWidgetCommon ui-widget">
+    
+
+        
+        <div id="pageEventData" class="hidden">
+
+          <div id="studentTools" class="bitLarger">
+            
+            
+                 <select id="studentSortingSelect">
+                    <option value="0" selected>Sort by Votes</option>
+                    <option value="1">Sort by Newest</option>
+                    <option value="2">Sort by Color</option>
+                    <option value="3">Sort by User</option>
+                  </select> 
+            <button id="studentNew">New</button>
+            
+          </div> 
+          <div class="bitLarger">
+  
+            <div id="adminTools" class="hidden">
+              
+              <div id="eventNoHeader">
+                <span class="mySpecialTitle">OnlineQuestions.org: Event number [<span id="showEventNo">XXXX</span>]</span>
+              </div>
+              
+              <div id="insideAdminTools">
+                <div id="menu" style="font-size:0.75em;">
+                  <div class="menublock">
+                    <div class="smaller menuTitleElement">Question:</div>
+                    <div id="controlgroup">
+                      <button id="lecturerNew">New</button>
+                      <button id="lecturerDelete">Delete</button>
+                      <button id="lecturerAnswered">Answered</button>
+                    </div>
+                  </div>
+
+                  <div class="menublock">
+                    <div class="smaller menuTitleElement">Question Sorting:</div>
+                    <select id="sortingSelect" class="mySelect">
+                      <option value="0" selected>Votes</option>
+                      <option value="1">Newest</option>
+                      <option value="2">Color</option>
+                      <option value="3">User</option>
+                    </select>   
+
+                  </div>
+
+                  <div class="menublock">
+                    <div class="smaller menuTitleElement">Event:</div>
+                    <div id="controlgroup2">
+                      <button id="lecturerClose">Close</button>
+                      <button id="lecturerWipe">Wipe Data</button>
+                      <button id="lecturerExport">Export</button>
+                    </div>
+                  </div>
+
+                  <div class="menublock">
+                    <div class="smaller menuTitleElement">Color:</div>
+                    <div id="controlgroup3">
+                      <button id="colorButtonMenu0" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+                      <button id="colorButtonMenu1" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+                      <button id="colorButtonMenu2" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+                      <button id="colorButtonMenu3" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+                      <button id="colorButtonMenu4" class="colorButtons ui-button ui-widget ui-corner-all ui-button-icon-only"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+         
+            <div id="feedbackLecturerError" class="smallTopMargin errorMsg"></div>
+            <div id="feedbackLecturerContent"></div>
+          </div> 
+        </div>
+      </div>
+
+
+
+    </div>
+  </body>
+</html>
