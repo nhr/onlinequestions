@@ -36,7 +36,7 @@ function my_file_get_contents($path, $ignored) {
 
 
 function cleanUpOldEvents($dir) {
-  $secondsToLive = 60 * 60 * 24 * 8; // 8 days
+  $secondsToLive = 60 * 60 * 24 * 365; // 365 days
   foreach (glob($dir . "event*") as $eventDir) {
     if (is_dir($eventDir)) {
       if ((time() - filemtime($eventDir)) > $secondsToLive) {
